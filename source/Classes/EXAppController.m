@@ -164,6 +164,10 @@ NSString * const EXKeepWindowOnTop = @"KeepWindowOnTop";
 		NSRect rect = NSMakeRect(windowFrame.origin.x - ((width - windowFrame.size.width) / 2), windowFrame.origin.y - ((height - windowFrame.size.height) / 2), width, height + WINDOW_TOOLBAR_HEIGHT);
 		[window setFrame:rect display:YES animate:YES];
 		
+		// Replacing embed width and height, resizes the embed when the window gets resized
+		[(DOMElement *)[container firstChild] setAttribute:@"width" value:@"100%"];
+		[(DOMElement *)[container firstChild] setAttribute:@"height" value:@"100%"];
+		
 		[body appendChild:container];
 	}
 	else
